@@ -1,8 +1,19 @@
+# idea file
+.idea
+*.iml
+
 # Compiled class file
+target
 *.class
 
 # Log file
+logs
 *.log
+
+# mac
+.DS_Store
+.AppleDouble
+.LSOverride
 
 # BlueJ files
 *.ctxt
