@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: api-client
+  cloud:
+    loadbalancer:
+      enabled: true
+      strategy: RANDOM
 
 eureka:
   client:
