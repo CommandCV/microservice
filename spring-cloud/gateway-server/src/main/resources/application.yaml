@@ -7,14 +7,27 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: api-server1
-          uri: http://localhost:8080
+        - id: api-client
+          uri: http://localhost:8090
           predicates:
-            - Query=api-server1
-        - id: api-server2
-          uri: http://localhost:8081
-          predicates:
-            - Query=api-server2
+            - Path=/api/**
+          filters:
+            - SetRequestHeader=X-Request-Flag, true
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:8090"
+            allowedMethods:
+              - "GET"
+              - "POST"
+              - "PUT"
+              - "DELETE"
+              - "OPTIONS"
+            allowedHeaders: "*"
+            allowedCredentials: true
+            maxAge: 300000
 
 eureka:
   client:
